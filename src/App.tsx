@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { AboutSection, Footer, Header, Home } from "./components";
+import {
+  AboutSection,
+  Footer,
+  Header,
+  Home,
+  ServicesSection,
+} from "./components";
 import SkillSection from "./components/skills-section/skills-section";
 import ContactSection from "./components/contact-section";
 
@@ -49,6 +55,7 @@ const App = () => {
       <Home />
       <AboutSection />
       <SkillSection />
+      <ServicesSection />
       <ContactSection />
       <Footer />
     </>

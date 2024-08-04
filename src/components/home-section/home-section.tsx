@@ -10,7 +10,7 @@ import {
 export default function Home() {
   return (
     <>
-      <HomeSectionContainer id="/home">
+      <HomeSectionContainer id="home">
         <HomeSectionWrapper>
           <HomeSectionContentWrapper>
             <HomeSectionPrimaryTitle>Hello, This is</HomeSectionPrimaryTitle>

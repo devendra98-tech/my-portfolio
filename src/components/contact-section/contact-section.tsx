@@ -2,7 +2,11 @@ import React from "react";
 
 export default function ContactSection() {
   return (
-    <section className="contact" id="contact">
+    <section
+      className="contact"
+      id="contact"
+      style={{ backgroundColor: " #f9f9f9" }}
+    >
       <div className="max-width">
         <h2 className="title">Contact me</h2>
         <div className="contact-content">

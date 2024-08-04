@@ -2,6 +2,7 @@ import styled from "styled-components";
 export const AboutSectionContainer = styled.div`
   font-family: "Poppins", sans-serif;
   padding: 100px 0 40px;
+  background-color: #f9f9f9;
 `;
 export const AboutSectionWrapper = styled.div`
   max-width: 1300px;
@@ -104,5 +105,6 @@ export const SkillTitle = styled.h2`
   font-weight: 500;
   margin-bottom: 60px;
   padding-bottom: 20px;
+  padding-top: 18px;
   font-family: "Ubuntu", sans-serif;
 `;

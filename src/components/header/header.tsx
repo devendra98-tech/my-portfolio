@@ -30,12 +30,12 @@ export default function Header() {
 
   const onMenuIconlick = () => {
     setIsOpen(!isOpen);
-
     setShow(!show);
   };
   const onMenuClick = () => {
     if (show) {
       setShow(false);
+      setIsOpen(false);
     }
   };
 
@@ -47,13 +47,18 @@ export default function Header() {
         </LogoContainer>
         <MenuContainer className={show ? "active" : ""}>
           <MenuItem onClick={onMenuClick}>
-            <a href="/#" className="menu-btn">
+            <a href="#home" className="menu-btn">
               Home
             </a>
           </MenuItem>
           <MenuItem onClick={onMenuClick}>
             <a href="#about" className="menu-btn">
               About
+            </a>
+          </MenuItem>
+          <MenuItem onClick={onMenuClick}>
+            <a href="#services" className="menu-btn">
+              Services
             </a>
           </MenuItem>
 
