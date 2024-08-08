@@ -5,3 +5,4 @@ export { default as Footer } from "./footer";
 export { default as Home } from "./home-section";
 export { default as Contact } from "./contact-section";
 export { default as Header } from "./header";
+export { default as Tost } from "./tost";

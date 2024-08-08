@@ -1,6 +1,54 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import { sendEmail } from "../../@services";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import contactFormvalidationSchema from "./contact-form-validations";
+import Loader from "../loader/loader";
+import Toast from "../tost";
+type ToastType = "success" | "warning" | "error" | "info";
 
 export default function ContactSection() {
+  const formik = useRef<any>(null);
+  const [loading, setLoading] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastType, setToastType] = useState<ToastType>("success");
+  const [initialValues] = useState<any>({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  function handleRef(e: any) {
+    formik.current = e;
+  }
+  const sendMessage = async (params: any, resetForm: any) => {
+    setLoading(true);
+    const payLoad = {
+      service_id: "service_970foha",
+      template_id: "template_7bymmuf",
+      user_id: "FOhxzVTlNeRwpMLg7",
+      template_params: {
+        ...params,
+      },
+    };
+    await sendEmail(payLoad).then((res: any) => {
+      if (res) {
+        if (res && res.status === 200) {
+          resetForm();
+          setToastMessage("Message sent successfully!");
+          setToastType("success");
+
+          setLoading(false);
+        } else if (res && res.status === 400) {
+          setToastMessage("Something went wrong!");
+          setToastType("error");
+          setLoading(false);
+        }
+      }
+    });
+  };
+  const handleSubmit = (data: any, { resetForm }: any) => {
+    sendMessage(data, resetForm);
+  };
   return (
     <section
       className="contact"
@@ -43,28 +91,94 @@ export default function ContactSection() {
           </div>
           <div className="column right">
             <div className="text">Message me</div>
-            <form action="#">
-              <div className="fields">
-                <div className="field name">
-                  <input type="text" placeholder="Name" required />
-                </div>
-                <div className="field email">
-                  <input type="email" placeholder="Email" required />
-                </div>
-              </div>
-              <div className="field">
-                <input type="text" placeholder="Subject" required />
-              </div>
-              <div className="field textarea">
-                <textarea placeholder="Message.." required></textarea>
-              </div>
-              <div className="button-area">
-                <button type="submit">Send message</button>
-              </div>
-            </form>
+            <Formik
+              validationSchema={contactFormvalidationSchema}
+              onSubmit={handleSubmit}
+              initialValues={initialValues}
+              innerRef={(e: any) => handleRef(e)}
+            >
+              {({ ...formikSubmit }: any) => (
+                <>
+                  <Form className={loading ? "opacity-on-load" : ""}>
+                    {loading && (
+                      <div className="loader-container">
+                        <Loader />
+                      </div>
+                    )}
+                    <div id="form-container" className="form-container">
+                      <div className="fields">
+                        <div className="field name">
+                          <Field
+                            type="text"
+                            name="name"
+                            placeholder="Name*"
+                            disabled={loading}
+                          />
+                          <ErrorMessage
+                            name="name"
+                            component="div"
+                            className="error"
+                          />
+                        </div>
+                        <div className="field email">
+                          <Field
+                            type="email"
+                            name="email"
+                            placeholder="Email*"
+                            disabled={loading}
+                          />
+                          <ErrorMessage
+                            name="email"
+                            component="div"
+                            className="error"
+                          />
+                        </div>
+                      </div>
+                      <div className="field">
+                        <Field
+                          type="text"
+                          name="subject"
+                          placeholder="Subject*"
+                          disabled={loading}
+                        />
+                        <ErrorMessage
+                          name="subject"
+                          component="div"
+                          className="error"
+                        />
+                      </div>
+                      <div className="field textarea">
+                        <Field
+                          as="textarea"
+                          name="message"
+                          placeholder="Message*"
+                          disabled={loading}
+                        />
+                        <ErrorMessage
+                          name="message"
+                          component="div"
+                          className="error"
+                        />
+                      </div>
+                      <div
+                        className={
+                          loading ? "button-area btn-disable" : "button-area"
+                        }
+                        onClick={formikSubmit.handleSubmit}
+                      >
+                        <button type="submit" disabled={loading}>
+                          Send message
+                        </button>
+                      </div>
+                    </div>
+                  </Form>
+                </>
+              )}
+            </Formik>
           </div>
         </div>
       </div>
+      {toastMessage && <Toast message={toastMessage} type={toastType} />}
     </section>
   );
 }
