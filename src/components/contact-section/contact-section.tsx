@@ -38,10 +38,10 @@ export default function ContactSection() {
           setToastType("success");
 
           setLoading(false);
-        } else if (res && res.status === 400) {
+        } else {
+          setLoading(false);
           setToastMessage("Something went wrong!");
           setToastType("error");
-          setLoading(false);
         }
       }
     });

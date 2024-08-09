@@ -29,7 +29,7 @@ export const HomeSectionSecondaryTitle = styled.div`
   font-weight: 600;
   margin-left: -3px;
   > span {
-    color: crimson;
+    color: #00a01d;
     transition: all 0.3s ease;
   }
   @media (max-width: 690px) {
@@ -40,7 +40,7 @@ export const HomeSectionTitle = styled.div`
   font-size: 40px;
   margin: 5px 0;
   > span {
-    color: crimson;
+    color: #00a01d;
     font-weight: 500;
   }
   @media (max-width: 690px) {

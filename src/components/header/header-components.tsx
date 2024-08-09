@@ -78,6 +78,9 @@ export const MenuContainer = styled.ul`
     margin-left: 25px;
     transition: color 0.3s ease;
   }
+  > li > a:hover {
+    color: #00a01d;
+  }
   &.active {
     left: 0;
     width: 80%;

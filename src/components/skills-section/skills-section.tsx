@@ -105,7 +105,7 @@ export default function SkillSection() {
               alt="imageVSCode"
               className="about__skills-img"
             />
-            <p className="about__skills-hover-text">VS Code</p>
+            <p className="about__skills-hover-text">VSCode</p>
           </div>
 
           <div className="about__skills-img">

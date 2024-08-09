@@ -44,7 +44,7 @@ export const Title = styled.h2`
     bottom: -8px;
     left: 50%;
     font-size: 20px;
-    color: crimson;
+    color: #00a01d;
     padding: 0 5px;
     background: #fff;
     transform: translateX(-50%);
@@ -58,9 +58,11 @@ export const AboutSectionContent = styled.div`
   gap: 32px;
 `;
 export const MyProfileContainer = styled.div`
+  height: fit-content;
+  width: 400px;
   > img {
-    height: 400px;
-    width: 400px;
+    height: 100%;
+    width: 100%;
     object-fit: cover;
     border-radius: 6px;
   }
@@ -71,9 +73,11 @@ export const MyProfileContainer = styled.div`
     width: 100%;
   }
   @media (max-width: 1104px) {
+    width: 350px;
+    height: fit-content;
     > img {
-      height: 350px;
-      width: 350px;
+      height: 100%;
+      width: 100%;
     }
   }
 `;
@@ -92,7 +96,7 @@ export const AboutMyRoleContainer = styled.div`
     font-size: 19px;
   }
   > span {
-    color: crimson;
+    color: #00a01d;
   }
 `;
 export const AboutMeContent = styled.p`

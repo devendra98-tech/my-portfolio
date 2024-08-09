@@ -18,7 +18,7 @@ export default function AboutSection() {
         <AboutSectionContent>
           <MyProfileContainer>
             <img
-              src="https://res.cloudinary.com/dsr8vo48i/image/upload/v1709398244/IMG_20240302_221324_stkz2b.jpg"
+              src="https://res.cloudinary.com/dsjin99km/image/upload/v1723194116/developer_hkd2pt.png"
               alt=""
             />
           </MyProfileContainer>

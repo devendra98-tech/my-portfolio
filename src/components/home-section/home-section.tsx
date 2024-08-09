@@ -18,8 +18,7 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTextIndex((prevIndex) => (prevIndex + 1) % texts.length);
-    }, 4000); // Change text every 4 seconds
-
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
   return (
