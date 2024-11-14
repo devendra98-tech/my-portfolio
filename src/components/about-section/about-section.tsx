@@ -24,20 +24,20 @@ export default function AboutSection() {
           </MyProfileContainer>
 
           <AboutMeContentContainer>
-            <AboutMyRoleContainer>
-              I am Devendra and I'm a
-              <span className="typing-2"> Frontend Developer</span>
-            </AboutMyRoleContainer>
+            <AboutMyRoleContainer>I’m Devendra,</AboutMyRoleContainer>
 
             <AboutMeContent>
-              Having Experience in developing web pages using HTML/HTML5,
-              CSS/CSS3, JavaScript, JSON, React JS, Redux, Knowledge on
-              customizing CSS framework like Bootstrap.Knowledge in React JS
-              framework. Familiar with creating Custom Reusable React Components
-              and experience in React Life cycle hooks, Forms, Events, Keys,
-              Router, Lazy loading, Higher Oder Component(HOC) Knowledge on
-              front-end development with back-end system integration. Expertise
-              in using IDE tools such as Visual Studio Code.
+              a passionate Frontend Developer with hands-on experience in
+              building modern, responsive web applications. I specialize in
+              HTML/HTML5, CSS/CSS3, JavaScript, and JSON, with advanced
+              expertise in React.js and Redux. My experience includes
+              customizing CSS frameworks like Bootstrap to create seamless and
+              dynamic user interfaces. I am skilled in creating reusable React
+              components and am proficient with React’s lifecycle hooks, forms,
+              events, routing, lazy loading, and Higher-Order Components (HOCs).
+              Additionally, I have experience integrating frontend solutions
+              with backend systems. I leverage development tools like Visual
+              Studio Code to ensure efficient and productive coding practices.
             </AboutMeContent>
           </AboutMeContentContainer>
         </AboutSectionContent>
