@@ -78,7 +78,7 @@ export const ServicesCard = styled.div`
   }
 
   i {
-    color: #00a01d;
+    color: #00303f;
     display: inline-block;
     font-size: 60px;
     margin-bottom: 20px;
@@ -98,7 +98,7 @@ export const ServicesCard = styled.div`
   }
 
   &::after {
-    background: #00a01d;
+    background: #00303f;
     content: "";
     height: 100%;
     left: -100%;

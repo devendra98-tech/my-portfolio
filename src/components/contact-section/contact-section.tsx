@@ -113,6 +113,7 @@ export default function ContactSection() {
                             name="name"
                             placeholder="Name*"
                             disabled={loading}
+                            className="custom-field"
                           />
                           <ErrorMessage
                             name="name"
@@ -126,6 +127,7 @@ export default function ContactSection() {
                             name="email"
                             placeholder="Email*"
                             disabled={loading}
+                            className="custom-field"
                           />
                           <ErrorMessage
                             name="email"
@@ -140,6 +142,7 @@ export default function ContactSection() {
                           name="subject"
                           placeholder="Subject*"
                           disabled={loading}
+                          className="custom-field"
                         />
                         <ErrorMessage
                           name="subject"
@@ -153,6 +156,7 @@ export default function ContactSection() {
                           name="message"
                           placeholder="Message*"
                           disabled={loading}
+                          className="custom-field"
                         />
                         <ErrorMessage
                           name="message"
