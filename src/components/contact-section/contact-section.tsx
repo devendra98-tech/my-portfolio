@@ -10,6 +10,7 @@ export default function ContactSection() {
   const formik = useRef<any>(null);
   const [loading, setLoading] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
+  const value = ""
   const [toastType, setToastType] = useState<ToastType>("success");
   const [initialValues] = useState<any>({
     name: "",
@@ -59,7 +60,7 @@ export default function ContactSection() {
         <h2 className="title">Contact me</h2>
         <div className="contact-content">
           <div className="column left">
-            <div className="text">Don't be shy</div>
+            <div className="text" >Don't be shy</div>
             <p>
               Feel free to get in touch with me. I am always open to discussing
               new projects, creative ideas or opportunities to be part of your
@@ -113,7 +114,6 @@ export default function ContactSection() {
                             name="name"
                             placeholder="Name*"
                             disabled={loading}
-                            className="custom-field"
                           />
                           <ErrorMessage
                             name="name"
@@ -127,7 +127,6 @@ export default function ContactSection() {
                             name="email"
                             placeholder="Email*"
                             disabled={loading}
-                            className="custom-field"
                           />
                           <ErrorMessage
                             name="email"
@@ -142,7 +141,6 @@ export default function ContactSection() {
                           name="subject"
                           placeholder="Subject*"
                           disabled={loading}
-                          className="custom-field"
                         />
                         <ErrorMessage
                           name="subject"
@@ -156,7 +154,6 @@ export default function ContactSection() {
                           name="message"
                           placeholder="Message*"
                           disabled={loading}
-                          className="custom-field"
                         />
                         <ErrorMessage
                           name="message"

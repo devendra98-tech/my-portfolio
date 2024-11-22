@@ -3,7 +3,7 @@ import {
   AboutSectionWrapper,
   SkillTitle,
 } from "../about-section/about-section-components";
-import WindowsIcon from "../../assets/icons/windows-icon.svg";
+// import WindowsIcon from "../../assets/icons/windows-icon.svg";
 export default function SkillSection() {
   return (
     <AboutSectionContainer id="skills">
@@ -84,7 +84,7 @@ export default function SkillSection() {
           </div>
           <div className="about__skills-img">
             <img
-              src={WindowsIcon}
+              // src={WindowsIcon}
               alt="imageWindows"
               className="about__skills-img"
             />

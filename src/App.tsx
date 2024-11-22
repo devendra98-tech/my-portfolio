@@ -9,6 +9,7 @@ import {
 } from "./components";
 import SkillSection from "./components/skills-section/skills-section";
 import ContactSection from "./components/contact-section";
+import CreditCard from "./components/credit-card-section/credit-card-section";
 
 const App = () => {
   const [isSmoothScroll, setIsSmoothScroll] = useState(true);
@@ -56,6 +57,7 @@ const App = () => {
       <AboutSection />
       <SkillSection />
       <ServicesSection />
+      <CreditCard />
       <ContactSection />
       <Footer />
     </>
