@@ -2,7 +2,8 @@ import styled from "styled-components";
 export const AboutSectionContainer = styled.div`
   font-family: "Poppins", sans-serif;
   padding: 100px 0 40px;
-  background-color: #f9f9f9;
+  background-color: var(--surface-color);
+  transition: background-color 0.3s ease;
 `;
 export const AboutSectionWrapper = styled.div`
   max-width: 1300px;
@@ -26,6 +27,7 @@ export const Title = styled.h2`
   margin-bottom: 60px;
   padding-bottom: 20px;
   font-family: "Ubuntu", sans-serif;
+  color: var(--text-color);
   &::before {
     content: "";
     position: absolute;
@@ -33,7 +35,7 @@ export const Title = styled.h2`
     left: 50%;
     width: 180px;
     height: 3px;
-    background: #111;
+    background: var(--divider-color);
     transform: translateX(-50%);
   }
   &::after {
@@ -44,18 +46,18 @@ export const Title = styled.h2`
     bottom: -8px;
     left: 50%;
     font-size: 20px;
-    color: #00a01d;
+    color: var(--accent-color);
     padding: 0 5px;
-    background: #fff;
+    background: var(--surface-color);
     transform: translateX(-50%);
   }
 `;
 export const AboutSectionContent = styled.div`
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 48px;
 `;
 export const MyProfileContainer = styled.div`
   height: fit-content;
@@ -83,6 +85,9 @@ export const MyProfileContainer = styled.div`
 `;
 export const AboutMeContentContainer = styled.div`
   width: 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
   @media (max-width: 947px) {
     flex: 100% 1;
     width: 100%;
@@ -100,7 +105,9 @@ export const AboutMyRoleContainer = styled.div`
   }
 `;
 export const AboutMeContent = styled.p`
-  text-align: justify;
+  text-align: left;
+  line-height: 1.75;
+  color: var(--text-color);
 `;
 export const SkillTitle = styled.h2`
   position: relative;
@@ -111,4 +118,5 @@ export const SkillTitle = styled.h2`
   padding-bottom: 20px;
   padding-top: 18px;
   font-family: "Ubuntu", sans-serif;
+  color: var(--text-color);
 `;

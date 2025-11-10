@@ -6,9 +6,12 @@ export const NavBar = styled.nav`
   padding: 30px 0;
   font-family: "Ubuntu", sans-serif;
   transition: all 0.3s ease;
+  background: var(--primary-color);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
   &.sticky {
     padding: 15px 0;
-    background: #00303f;
+    background: var(--primary-color);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
   }
 `;
 export const NavBarContentContainer = styled.div`
@@ -50,7 +53,7 @@ export const LogoContainer = styled.div`
     animation: slide 8s linear infinite forwards;
   }
   &.sticky-logo > a {
-    background: white;
+    background: var(--on-primary-color);
     -webkit-text-fill-color: transparent;
     background-clip: border-box;
     -webkit-background-clip: text;
@@ -72,14 +75,14 @@ export const MenuContainer = styled.ul`
   }
   > li > a {
     display: block;
-    color: #fff;
+    color: var(--on-primary-color);
     font-size: 18px;
     font-weight: 500;
     margin-left: 25px;
     transition: color 0.3s ease;
   }
   > li > a:hover {
-    color: #00a01d;
+    color: var(--accent-color);
   }
   &.active {
     left: 0;
@@ -92,7 +95,7 @@ export const MenuContainer = styled.ul`
     width: 100%;
     left: -100%;
     top: 0;
-    background: #111;
+    background: var(--mobile-nav-background);
     text-align: center;
     padding-top: 80px;
     transition: all 0.3s ease;
@@ -108,9 +111,39 @@ export const MenuContainer = styled.ul`
 `;
 export const MenuItem = styled.li`
   > a {
-    color: #fff;
+    color: var(--on-primary-color);
     font-size: 23px;
     cursor: pointer;
     display: none;
+  }
+`;
+export const ControlsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 18px;
+`;
+
+export const ThemeToggleButton = styled.button`
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: transparent;
+  color: var(--on-primary-color);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease,
+    transform 0.3s ease;
+  cursor: pointer;
+  @media (max-width: 947px) {
+    order: -1;
+  }
+  &:hover,
+  &:focus-visible {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: var(--accent-color);
+    transform: translateY(-2px);
+    outline: none;
   }
 `;

@@ -1,16 +1,9 @@
-import React from "react";
-import { RotatingLines } from "react-loader-spinner";
-
-function Loader() {
-  return (
-    <RotatingLines
-      visible={true}
-      width="96"
-      strokeWidth="5"
-      animationDuration="0.75"
-      ariaLabel="rotating-lines-loading"
-    />
-  );
-}
+const Loader = () => (
+  <div className="modern-loader" role="status" aria-live="polite">
+    <span className="dot" />
+    <span className="dot" />
+    <span className="dot" />
+  </div>
+);
 
 export default Loader;

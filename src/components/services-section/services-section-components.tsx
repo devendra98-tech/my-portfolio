@@ -1,7 +1,8 @@
 import styled from "styled-components";
 export const ServicesSectionContainer = styled.div`
   padding: 60px 0;
-  background-color: #f9f9f9;
+  background-color: var(--surface-color);
+  transition: background-color 0.3s ease;
 `;
 
 export const ServicesSectionWrapper = styled.div`
@@ -47,9 +48,8 @@ export const ServicesSectionContent = styled.div`
 `;
 
 export const ServicesCard = styled.div`
-  background: #ffffff;
-  /* border-left: 2px solid #00a01d; */
-  box-shadow: 0 0 10px #cccccc;
+  background: var(--surface-elevated);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
   overflow: hidden;
   padding: 30px;
   position: relative;
@@ -59,6 +59,7 @@ export const ServicesCard = styled.div`
   text-align: center;
   transition: all 0.35s ease-in-out;
   border-radius: 8px;
+  color: var(--text-color);
   @media (min-width: 768px) and (max-width: 1024px) {
     flex: 0 1 calc(45% - 20px); /* Adjust percentage as needed */
   }
@@ -74,11 +75,11 @@ export const ServicesCard = styled.div`
   &:hover i,
   &:hover h4,
   &:hover p {
-    color: #ffffff !important;
+    color: var(--on-primary-color) !important;
   }
 
   i {
-    color: #00303f;
+    color: var(--accent-color);
     display: inline-block;
     font-size: 60px;
     margin-bottom: 20px;
@@ -98,7 +99,7 @@ export const ServicesCard = styled.div`
   }
 
   &::after {
-    background: #00303f;
+    background: var(--primary-color);
     content: "";
     height: 100%;
     left: -100%;
@@ -117,4 +118,5 @@ export const ServicesCardContent = styled.div`
 export const CardTitle = styled.h4`
   margin-bottom: 10px;
   font-size: 1.5rem;
+  color: var(--text-color);
 `;

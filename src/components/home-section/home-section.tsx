@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import {
   HomeSectionContainer,
   HomeSectionContentWrapper,
@@ -7,30 +7,56 @@ import {
   HomeSectionTitle,
   HomeSectionWrapper,
 } from "./home-section-components";
+import { useGsapReveal } from "../../hooks/useGsapReveal";
+
 const texts = [
   "Frontend Developer",
   "Web Developer",
   "Shopify Developer",
   "React Developer",
 ];
-export default function Home() {
+type HomeProps = {
+  isLoading: boolean;
+};
+
+const Home: FC<HomeProps> = ({ isLoading }) => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const containerRef = useRef<HTMLElement | null>(null);
+
+  useGsapReveal(containerRef, { y: 20 }, !isLoading);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTextIndex((prevIndex) => (prevIndex + 1) % texts.length);
     }, 4000);
     return () => clearInterval(interval);
   }, []);
-  return (
-    <>
-      <HomeSectionContainer id="home">
+  if (isLoading) {
+    return (
+      <HomeSectionContainer id="home" ref={containerRef}>
         <HomeSectionWrapper>
           <HomeSectionContentWrapper>
-            <HomeSectionPrimaryTitle>Hello, This is</HomeSectionPrimaryTitle>
-            <HomeSectionSecondaryTitle>
+            <div className="skeleton skeleton-text skeleton-subtitle" />
+            <div className="skeleton skeleton-text skeleton-title" />
+            <div className="skeleton skeleton-text skeleton-tagline" />
+          </HomeSectionContentWrapper>
+        </HomeSectionWrapper>
+      </HomeSectionContainer>
+    );
+  }
+
+  return (
+    <>
+      <HomeSectionContainer id="home" ref={containerRef}>
+        <HomeSectionWrapper>
+          <HomeSectionContentWrapper>
+            <HomeSectionPrimaryTitle data-animate="fade">
+              Hello, This is
+            </HomeSectionPrimaryTitle>
+            <HomeSectionSecondaryTitle data-animate="fade">
               <span>D</span>evendra <span>G</span>olakoti
             </HomeSectionSecondaryTitle>
-            <HomeSectionTitle>
+            <HomeSectionTitle data-animate="fade">
               And I'm a{" "}
               <span className="typing">{texts[currentTextIndex]}</span>
             </HomeSectionTitle>
@@ -39,4 +65,6 @@ export default function Home() {
       </HomeSectionContainer>
     </>
   );
-}
+};
+
+export default Home;

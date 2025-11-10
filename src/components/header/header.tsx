@@ -1,94 +1,138 @@
-import React, { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import {
   LogoContainer,
   MenuContainer,
   MenuItem,
   NavBar,
   NavBarContentContainer,
+  ControlsWrapper,
+  ThemeToggleButton,
 } from "./header-components";
 
-export default function Header() {
-  const [show, setShow] = useState(false);
-  const [isScroll, setIsScroll] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+type HeaderProps = {
+  isSticky: boolean;
+  isLoading: boolean;
+  theme: "light" | "dark";
+  onToggleTheme: () => void;
+};
 
-  useEffect(() => {
-    function handleScroll() {
-      if (window.scrollY > 50) {
-        setIsScroll(true);
-      } else {
-        setIsScroll(false);
-      }
-    }
+export default function Header({
+  isSticky,
+  isLoading,
+  theme,
+  onToggleTheme,
+}: HeaderProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+  const handleToggleMenu = useCallback(() => {
+    setIsMenuOpen((previous) => !previous);
   }, []);
 
-  const onMenuIconlick = () => {
-    setIsOpen(!isOpen);
-    setShow(!show);
-  };
-  const onMenuClick = () => {
-    if (show) {
-      setShow(false);
-      setIsOpen(false);
-    }
-  };
+  const handleMenuItemClick = useCallback(() => {
+    setIsMenuOpen(false);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <NavBar className={isSticky ? "sticky" : ""} aria-hidden="true">
+        <NavBarContentContainer>
+          <LogoContainer className={isSticky ? "sticky-logo" : ""}>
+            <div className="skeleton skeleton-text skeleton-logo" />
+          </LogoContainer>
+          <ControlsWrapper>
+            <MenuContainer>
+              {[...Array(4)].map((_, index) => (
+                <MenuItem key={index}>
+                  <span className="skeleton skeleton-pill" />
+                </MenuItem>
+              ))}
+            </MenuContainer>
+            <span className="skeleton skeleton-circle" />
+            <div className="menu-btn placeholder">
+              <span className="skeleton skeleton-bar" />
+            </div>
+          </ControlsWrapper>
+        </NavBarContentContainer>
+      </NavBar>
+    );
+  }
 
   return (
-    <NavBar className={isScroll ? "sticky" : ""}>
+    <NavBar className={isSticky ? "sticky" : ""}>
       <NavBarContentContainer>
-        <LogoContainer className={isScroll ? "sticky-logo" : ""}>
-          <a href="# ">Devendra Golakoti</a>
+        <LogoContainer className={isSticky ? "sticky-logo" : ""}>
+          <a href="#home">Devendra Golakoti</a>
         </LogoContainer>
-        <MenuContainer className={show ? "active" : ""}>
-          <MenuItem onClick={onMenuClick}>
-            <a href="#home" className="menu-btn">
-              Home
-            </a>
-          </MenuItem>
-          <MenuItem onClick={onMenuClick}>
-            <a href="#about" className="menu-btn">
-              About
-            </a>
-          </MenuItem>
-          <MenuItem onClick={onMenuClick}>
-            <a href="#services" className="menu-btn">
-              Services
-            </a>
-          </MenuItem>
-
-          <MenuItem onClick={onMenuClick}>
-            <a href="#skills" className="menu-btn">
-              Skills
-            </a>
-          </MenuItem>
-
-          <MenuItem onClick={onMenuClick}>
-            <a href="#contact" className="menu-btn">
-              Contact
-            </a>
-          </MenuItem>
-        </MenuContainer>
-
-        {/* <div className="menu-btn " onClick={onMenuIconlick}>
-          <i className="fas fa-bars"></i>
-        </div> */}
-
-        <div
-          className={`menu-btn ${isOpen ? "open" : ""}`}
-          id="nav-icon3"
-          onClick={onMenuIconlick}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+        <ControlsWrapper>
+          <MenuContainer className={isMenuOpen ? "active" : ""}>
+            <MenuItem>
+              <a
+                href="#home"
+                className="menu-btn"
+                onClick={handleMenuItemClick}
+              >
+                Home
+              </a>
+            </MenuItem>
+            <MenuItem>
+              <a
+                href="#about"
+                className="menu-btn"
+                onClick={handleMenuItemClick}
+              >
+                About
+              </a>
+            </MenuItem>
+            <MenuItem>
+              <a
+                href="#services"
+                className="menu-btn"
+                onClick={handleMenuItemClick}
+              >
+                Services
+              </a>
+            </MenuItem>
+            <MenuItem>
+              <a
+                href="#skills"
+                className="menu-btn"
+                onClick={handleMenuItemClick}
+              >
+                Skills
+              </a>
+            </MenuItem>
+            <MenuItem>
+              <a
+                href="#contact"
+                className="menu-btn"
+                onClick={handleMenuItemClick}
+              >
+                Contact
+              </a>
+            </MenuItem>
+          </MenuContainer>
+          <ThemeToggleButton
+            type="button"
+            onClick={onToggleTheme}
+            aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
+            aria-pressed={theme === "dark"}
+          >
+            <i className={`fas ${theme === "dark" ? "fa-sun" : "fa-moon"}`} />
+          </ThemeToggleButton>
+          <button
+            type="button"
+            className={`menu-btn ${isMenuOpen ? "open" : ""}`}
+            id="nav-icon3"
+            onClick={handleToggleMenu}
+            aria-label="Toggle navigation menu"
+            aria-expanded={isMenuOpen}
+          >
+            <span />
+            <span />
+            <span />
+            <span />
+          </button>
+        </ControlsWrapper>
       </NavBarContentContainer>
     </NavBar>
   );
