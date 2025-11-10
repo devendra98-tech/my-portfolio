@@ -35,16 +35,11 @@ export const LogoContainer = styled.div`
   > a {
     font-size: 35px;
     font-weight: 600;
-    background: repeating-linear-gradient(
-      -45deg,
-      red 0%,
-      yellow 7.14%,
-      rgb(0, 255, 0) 14.28%,
-      rgb(0, 255, 255) 21.4%,
-      cyan 28.56%,
-      blue 35.7%,
-      magenta 42.84%,
-      red 50%
+    background: linear-gradient(
+      120deg,
+      var(--accent-color) 0%,
+      color-mix(in srgb, var(--accent-color) 35%, var(--on-primary-color)) 60%,
+      color-mix(in srgb, var(--accent-color) 20%, var(--on-primary-color)) 100%
     );
     background-size: 600vw 600vw;
     -webkit-text-fill-color: transparent;
