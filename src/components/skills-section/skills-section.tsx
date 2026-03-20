@@ -29,6 +29,11 @@ const SKILLS: SkillItemProps[] = [
     alt: "JavaScript logo",
   },
   {
+    label: "Next.js",
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+    alt: "Next.js logo",
+  },
+  {
     label: "React",
     src: "https://cdn.worldvectorlogo.com/logos/react-2.svg",
     alt: "React logo",
@@ -48,35 +53,42 @@ const SKILLS: SkillItemProps[] = [
     src: "https://cdn.worldvectorlogo.com/logos/github-icon-1.svg",
     alt: "GitHub logo",
   },
-  {
-    label: "CodePen",
-    src: "https://cdn.worldvectorlogo.com/logos/codepen-icon.svg",
-    alt: "CodePen logo",
-  },
-  {
-    label: "Figma",
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Figma-logo.svg/1667px-Figma-logo.svg.png",
-    alt: "Figma logo",
-  },
-  {
-    label: "Windows",
-    src: "https://cdn.worldvectorlogo.com/logos/microsoft-windows-22.svg",
-    alt: "Microsoft Windows logo",
-  },
-  {
-    label: "macOS",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg",
-    alt: "Apple logo",
-  },
-  {
-    label: "VS Code",
-    src: "https://cdn.worldvectorlogo.com/logos/visual-studio-code-1.svg",
-    alt: "Visual Studio Code logo",
-  },
+
   {
     label: "Slack",
     src: "https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg",
     alt: "Slack logo",
+  },
+  {
+    label: "Figma",
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+    alt: "Figma logo",
+  },
+
+  {
+    label: "Node.js",
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+    alt: "Node.js logo",
+  },
+  {
+    label: "Cypress",
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cypressio/cypressio-original.svg",
+    alt: "Cypress logo",
+  },
+  {
+    label: "GitLab",
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg",
+    alt: "GitLab logo",
+  },
+  {
+    label: "Bitbucket",
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bitbucket/bitbucket-original.svg",
+    alt: "Bitbucket logo",
+  },
+  {
+    label: "Jira",
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg",
+    alt: "Jira logo",
   },
 ];
 

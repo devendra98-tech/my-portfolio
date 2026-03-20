@@ -24,16 +24,16 @@ const SERVICES: ServiceItemProps[] = [
       "I build fast, interactive websites using React.js, HTML, CSS, and JavaScript.",
   },
   {
-    icon: "fas fa-paint-brush",
-    title: "UI/UX Design",
+    icon: "fas fa-layer-group",
+    title: "Full Stack Development",
     description:
-      "Creating visually appealing and user-friendly interfaces to enhance user experience.",
+      "Building end-to-end web applications using React for frontend and Node.js for backend integration.",
   },
   {
-    icon: "fas fa-store",
-    title: "Shopify Development",
+    icon: "fas fa-bolt",
+    title: "Next.js Development",
     description:
-      "Developing and customizing Shopify stores to meet your e-commerce needs.",
+      "Creating high-performance applications using Next.js with SSR, SSG, and modern optimization techniques.",
   },
   {
     icon: "fas fa-mobile-alt",
@@ -57,7 +57,7 @@ const SERVICES: ServiceItemProps[] = [
 
 const ServiceItem: FC<ServiceItemProps> = ({ icon, title, description }) => (
   <ServicesCard>
-    <ServicesCardContent data-animate="fade">
+    <ServicesCardContent>
       <i className={icon} aria-hidden="true"></i>
       <CardTitle>{title}</CardTitle>
       <p>{description}</p>

@@ -73,8 +73,8 @@ const AnimatedText: FC<AnimatedTextProps> = ({
           opacity: 1,
           rotateX: 0,
           ease: "power4.out",
-          duration: 0.7,
-          stagger: mode === "words" ? 0.07 : 0.03,
+          duration: 0.45,
+          stagger: mode === "words" ? 0.05 : 0.02,
           scrollTrigger: {
             trigger: element,
             start: "top 80%",
