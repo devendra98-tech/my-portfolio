@@ -66,7 +66,11 @@ export const ServicesCard = styled.div`
 
   @media (max-width: 947px) {
     flex: 0 1 100%; /* Each card takes up full width */
-    margin: 10px 32px;
+    margin: 10px 16px;
+  }
+
+  @media (max-width: 480px) {
+    margin: 10px 0;
   }
   &:hover::after {
     left: 0;

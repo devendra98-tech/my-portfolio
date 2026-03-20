@@ -49,6 +49,11 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 :root {
   --background-color: #ffffff;
   --surface-color: #f9f9f9;
@@ -74,7 +79,7 @@ html {
   --background-color: #0f172a;
   --surface-color: #15213b;
   --surface-elevated: #1f2a3d;
-  --text-color: #e2e8f0;
+  --text-color: #ffffff;
   --text-muted: #94a3b8;
   --primary-color: #1a2539;
   --primary-color-hover: #23324a;
@@ -89,6 +94,14 @@ html {
   --success-color: #22c55e;
   --error-color: #f87171;
   --focus-ring-color: rgba(56, 189, 248, 0.4);
+}
+
+[data-theme="dark"] body {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .split-text {
+  color: #ffffff;
 }
 
 body {

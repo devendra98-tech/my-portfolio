@@ -68,7 +68,7 @@ export default function ContactSection({ isLoading }: ContactSectionProps) {
 
   const handleSubmit = async (
     values: ContactFormValues,
-    { resetForm }: FormikHelpers<ContactFormValues>
+    { resetForm }: FormikHelpers<ContactFormValues>,
   ) => {
     setLoading(true);
     setSubmissionStatus("idle");
@@ -208,7 +208,7 @@ export default function ContactSection({ isLoading }: ContactSectionProps) {
                               <Field
                                 type="text"
                                 name="subject"
-                                placeholder="Subject*"
+                                placeholder="Subject"
                                 disabled={isBusy}
                               />
                               <ErrorMessage
@@ -221,7 +221,7 @@ export default function ContactSection({ isLoading }: ContactSectionProps) {
                               <Field
                                 as="textarea"
                                 name="message"
-                                placeholder="Message*"
+                                placeholder="Message"
                                 disabled={isBusy}
                               />
                               <ErrorMessage
@@ -247,8 +247,9 @@ export default function ContactSection({ isLoading }: ContactSectionProps) {
                         )}
                         {submissionStatus === "error" && !toastMessage && (
                           <div className="submission-status error">
-                            Something went wrong. Please try again or contact me
-                            directly.
+                            Oops! Something went wrong while sending your
+                            message. Please try again, or feel free to reach out
+                            directly at mrgolakoti@gmail.com.
                           </div>
                         )}
                       </>

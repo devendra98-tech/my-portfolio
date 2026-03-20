@@ -11,9 +11,11 @@ import { useGsapReveal } from "../../hooks/useGsapReveal";
 
 const texts = [
   "Frontend Developer",
-  "Web Developer",
-  "Shopify Developer",
   "React Developer",
+  "Next.JS Developer",
+  "UI Developer",
+  "JavaScript Developer",
+  "Full Stack Developer (Node.js)",
 ];
 type HomeProps = {
   isLoading: boolean;

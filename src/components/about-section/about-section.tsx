@@ -19,11 +19,16 @@ const AboutSection: FC<AboutSectionProps> = ({ isLoading }) => {
   useGsapReveal(containerRef, {}, !isLoading);
 
   const paragraphs = [
-    "Hey there! I’m Devendra, a passionate Frontend Developer dedicated to transforming ideas into elegant, responsive, and high-performing web experiences.",
-    "I specialize in React.js, Next.js, and Redux, creating modern, scalable interfaces that are both visually stunning and lightning-fast. With a solid foundation in HTML5, CSS3, JavaScript, and JSON, I bring designs to life with creativity, precision, and clean code.",
-    "My focus lies in building reusable and optimized components, leveraging Next.js features like Server-Side Rendering (SSR) and Static Site Generation (SSG) to enhance performance and SEO. I often use frameworks like Tailwind CSS, Bootstrap, and PrimeFlex to deliver consistent, responsive, and pixel-perfect designs.",
-    "Beyond development, I enjoy crafting seamless user journeys by integrating front-end applications with back-end systems, ensuring every interaction feels intuitive and effortless.",
-    "I believe in writing maintainable, performance-driven code, staying curious about emerging web technologies, and constantly refining my craft.",
+    `Hey there! I’m Devendra, a passionate Frontend Developer dedicated to transforming ideas into elegant, responsive, and high-performing web experiences.
+
+I specialize in React.js, Next.js, and Redux, building modern and scalable applications that are both visually appealing and performance-driven. With a strong foundation in HTML5, CSS3, JavaScript, and JSON, I bring designs to life with clean, efficient, and maintainable code.
+
+My focus is on creating reusable and optimized components, while leveraging Next.js features like Server-Side Rendering (SSR) and Static Site Generation (SSG) to improve performance and SEO.
+
+I have experience working with frameworks like Tailwind CSS, Bootstrap, and PrimeFlex to build responsive, consistent, and pixel-perfect user interfaces.
+
+Beyond development, I enjoy integrating front-end applications with back-end systems, ensuring seamless and intuitive user experiences.
+I am passionate about writing maintainable, high-performance code, continuously learning new technologies, and improving my skills to stay up-to-date in the ever-evolving web development landscape.`,
   ];
 
   return (
@@ -57,7 +62,7 @@ const AboutSection: FC<AboutSectionProps> = ({ isLoading }) => {
                   <AnimatedText
                     key={paragraph.slice(0, 24)}
                     text={paragraph}
-                    delay={index * 0.12}
+                    delay={index * 0.06}
                     mode={index === 0 ? "letters" : "words"}
                   />
                 ))}
