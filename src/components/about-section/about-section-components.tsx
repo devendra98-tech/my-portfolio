@@ -58,6 +58,9 @@ export const AboutSectionContent = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   gap: 48px;
+  @media (max-width: 947px) {
+    gap: 0;
+  }
 `;
 export const MyProfileContainer = styled.div`
   height: fit-content;
