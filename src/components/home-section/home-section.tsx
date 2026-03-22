@@ -1,5 +1,7 @@
 import { FC, useEffect, useRef, useState } from "react";
 import {
+  HomeHeroActions,
+  HomeResumeButton,
   HomeSectionContainer,
   HomeSectionContentWrapper,
   HomeSectionPrimaryTitle,
@@ -7,6 +9,7 @@ import {
   HomeSectionTitle,
   HomeSectionWrapper,
 } from "./home-section-components";
+import { SITE } from "../../config/site";
 import { useGsapReveal } from "../../hooks/useGsapReveal";
 
 const texts = [
@@ -62,6 +65,24 @@ const Home: FC<HomeProps> = ({ isLoading }) => {
               And I'm a{" "}
               <span className="typing">{texts[currentTextIndex]}</span>
             </HomeSectionTitle>
+            <HomeHeroActions data-animate="fade">
+              <span className="home-resume-cta">
+                <span
+                  className="home-resume-cta__pulse"
+                  aria-hidden="true"
+                />
+                <HomeResumeButton
+                  href={SITE.resumePath}
+                  download="Devendra-Golakoti-Resume.pdf"
+                  className="home-resume-btn premium-glow-btn"
+                >
+                  <span className="home-resume-btn__content">
+                    <i className="fas fa-download" aria-hidden="true" />
+                    Download Resume
+                  </span>
+                </HomeResumeButton>
+              </span>
+            </HomeHeroActions>
           </HomeSectionContentWrapper>
         </HomeSectionWrapper>
       </HomeSectionContainer>
