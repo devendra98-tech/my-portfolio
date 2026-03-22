@@ -17,7 +17,7 @@ export const HomeSectionWrapper = styled.div`
   padding: 0 80px;
   margin: auto;
   @media (max-width: 690px) {
-    padding: 0 23px;
+    padding: 0 46px;
   }
 `;
 export const HomeSectionContentWrapper = styled.div``;
@@ -46,4 +46,31 @@ export const HomeSectionTitle = styled.div`
   @media (max-width: 690px) {
     font-size: 32px;
   }
+`;
+
+export const HomeHeroActions = styled.div`
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+`;
+
+export const HomeResumeButton = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 160, 29, 0.95) 0%,
+    rgba(0, 80, 40, 0.98) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  cursor: pointer;
 `;
