@@ -4,7 +4,7 @@ export const SITE = {
   linkedIn: "https://www.linkedin.com/in/golakoti-devendra-b5a145213/",
   githubProfile: "https://github.com/devendra98-tech",
   githubApiUser: "devendra98-tech",
-  resumePath: "/resume.pdf",
+  resumePath: "/my-portfolio/resume.pdf"
 } as const;
 
 export const SECTION_IDS = {
