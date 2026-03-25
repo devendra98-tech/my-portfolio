@@ -1,4 +1,3 @@
-/** Central links and IDs for portfolio sections */
 export const SITE = {
   /** Update to your public LinkedIn profile URL */
   linkedIn: "https://www.linkedin.com/in/golakoti-devendra-b5a145213/",
