@@ -62,7 +62,7 @@ I am passionate about writing maintainable, high-performance code, continuously 
                   <AnimatedText
                     key={paragraph.slice(0, 24)}
                     text={paragraph}
-                    delay={index * 0.06}
+                    delay={index * 0.03}
                     mode={index === 0 ? "letters" : "words"}
                   />
                 ))}
