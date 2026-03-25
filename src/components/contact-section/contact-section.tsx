@@ -6,6 +6,7 @@ import Loader from "../loader/loader";
 import Toast from "../tost";
 import { useGsapReveal } from "../../hooks/useGsapReveal";
 import type { EmailPayload } from "../../@services/sendEmail/sendEmail";
+import { SITE } from "../../config/site";
 
 type ToastType = "success" | "warning" | "error" | "info";
 type ContactFormValues = {
@@ -138,6 +139,34 @@ export default function ContactSection({ isLoading }: ContactSectionProps) {
                   {INFO_ROWS.map((row) => (
                     <InfoRow key={row.head} {...row} />
                   ))}
+                </div>
+                <div className="contact-social" aria-label="Social profiles">
+                  <a
+                    className="contact-social__btn"
+                    href={SITE.linkedIn}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn profile"
+                  >
+                    <i className="fab fa-linkedin-in" aria-hidden="true" />
+                  </a>
+                  <a
+                    className="contact-social__btn"
+                    href={SITE.githubProfile}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub profile"
+                  >
+                    <i className="fab fa-github" aria-hidden="true" />
+                  </a>
+                  <a
+                    className="contact-social__btn"
+                    href={SITE.resumePath}
+                    download="Devendra-Golakoti-Resume.pdf"
+                    aria-label="Download resume PDF"
+                  >
+                    <i className="fas fa-file-pdf" aria-hidden="true" />
+                  </a>
                 </div>
               </>
             )}

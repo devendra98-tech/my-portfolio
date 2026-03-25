@@ -1,28 +1,50 @@
-import { useCallback, useState } from "react";
-import {
-  LogoContainer,
-  MenuContainer,
-  MenuItem,
-  NavBar,
-  NavBarContentContainer,
-  ControlsWrapper,
-  ThemeToggleButton,
-} from "./header-components";
+import { useCallback, useEffect, useState } from "react";
+import { SECTION_IDS } from "../../config/site";
+
+const SCROLL_SCROLLED_PX = 56;
+const SCROLL_HEADER_EXIT_PX = 670;
 
 type HeaderProps = {
-  isSticky: boolean;
   isLoading: boolean;
-  theme: "light" | "dark";
-  onToggleTheme: () => void;
 };
 
-export default function Header({
-  isSticky,
-  isLoading,
-  theme,
-  onToggleTheme,
-}: HeaderProps) {
+const CENTER_NAV: { href: string; label: string }[] = [
+  { href: `#${SECTION_IDS.home}`, label: "Home" },
+  { href: `#${SECTION_IDS.about}`, label: "About" },
+  { href: `#${SECTION_IDS.services}`, label: "Services" },
+  { href: `#${SECTION_IDS.skills}`, label: "Skills" },
+];
+
+export default function Header({ isLoading }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isExit, setIsExit] = useState(false);
+  const [isMobileScrolled, setIsMobileScrolled] = useState(false); // ✅ mobile
+  useEffect(() => {
+    const sync = () => {
+      const y = window.scrollY;
+      const isMobile = window.innerWidth <= 947;
+
+      if (isMobile) {
+        // 📱 mobile only class
+        setIsMobileScrolled(y > 570);
+
+        // reset desktop states
+        setIsScrolled(false);
+        setIsExit(false);
+      } else {
+        // 💻 desktop behavior
+        setIsScrolled(y > SCROLL_SCROLLED_PX);
+        setIsExit(y > SCROLL_HEADER_EXIT_PX && !isMenuOpen);
+
+        // reset mobile
+        setIsMobileScrolled(false);
+      }
+    };
+    sync();
+    window.addEventListener("scroll", sync, { passive: true });
+    return () => window.removeEventListener("scroll", sync);
+  }, [isMenuOpen]);
 
   const handleToggleMenu = useCallback(() => {
     setIsMenuOpen((previous) => !previous);
@@ -34,106 +56,113 @@ export default function Header({
 
   if (isLoading) {
     return (
-      <NavBar className={isSticky ? "sticky" : ""} aria-hidden="true">
-        <NavBarContentContainer>
-          <LogoContainer className={isSticky ? "sticky-logo" : ""}>
-            <div className="skeleton skeleton-text skeleton-logo" />
-          </LogoContainer>
-          <ControlsWrapper>
-            <MenuContainer>
-              {[...Array(4)].map((_, index) => (
-                <MenuItem key={index}>
-                  <span className="skeleton skeleton-pill" />
-                </MenuItem>
-              ))}
-            </MenuContainer>
-            <span className="skeleton skeleton-circle" />
-            <div className="menu-btn placeholder">
-              <span className="skeleton skeleton-bar" />
+      <nav
+        className="site-header is-loading"
+        aria-hidden="true"
+        data-scrolled="false"
+      >
+        <div className="site-header__chrome">
+          <div className="site-header__pill">
+            <div className="site-header__rail site-header__rail--start">
+              <div className="site-header__brand">
+                <div className="skeleton skeleton-text skeleton-logo" />
+              </div>
             </div>
-          </ControlsWrapper>
-        </NavBarContentContainer>
-      </NavBar>
+            <div
+              className="site-header__rail site-header__rail--center"
+              aria-hidden
+            >
+              <div className="site-header__nav-skeleton">
+                {Array.from({ length: 4 }).map((_, i) => (
+                  <span className="skeleton skeleton-pill" key={i} />
+                ))}
+              </div>
+            </div>
+            <div className="site-header__rail site-header__rail--end">
+              <div className="site-header__end">
+                <span className="skeleton skeleton-pill site-header__cta-sk" />
+                <div className="site-header__burger-placeholder skeleton skeleton-bar" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
     );
   }
 
   return (
-    <NavBar className={isSticky ? "sticky" : ""}>
-      <NavBarContentContainer>
-        <LogoContainer className={isSticky ? "sticky-logo" : ""}>
-          <a href="#home">Devendra Golakoti</a>
-        </LogoContainer>
-        <ControlsWrapper>
-          <MenuContainer className={isMenuOpen ? "active" : ""}>
-            <MenuItem>
+    <nav
+      className={[
+        "site-header",
+        isScrolled && "scrolled",
+        isExit && "header-exit",
+        isMenuOpen && "nav-open",
+        isMobileScrolled && "mobile-scrolled",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+      data-scrolled={isScrolled ? "true" : "false"}
+    >
+      <div className="site-header__chrome">
+        <div className="site-header__pill">
+          <div className="site-header__rail site-header__rail--start">
+            <div className="site-header__brand">
               <a
-                href="#home"
-                className="menu-btn"
+                href={`#${SECTION_IDS.home}`}
+                className="site-header__logo"
                 onClick={handleMenuItemClick}
               >
-                Home
+                Devendra Golakoti
               </a>
-            </MenuItem>
-            <MenuItem>
+            </div>
+          </div>
+
+          <div className="site-header__rail site-header__rail--center">
+            <ul
+              className={`site-header__nav${isMenuOpen ? " is-open" : ""}`}
+              id="site-header-nav"
+            >
+              {CENTER_NAV.map((link) => (
+                <li className="site-header__nav-item" key={link.href}>
+                  <a
+                    href={link.href}
+                    className="site-header__link"
+                    onClick={handleMenuItemClick}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="site-header__rail site-header__rail--end">
+            <div className="site-header__end">
               <a
-                href="#about"
-                className="menu-btn"
-                onClick={handleMenuItemClick}
-              >
-                About
-              </a>
-            </MenuItem>
-            <MenuItem>
-              <a
-                href="#services"
-                className="menu-btn"
-                onClick={handleMenuItemClick}
-              >
-                Services
-              </a>
-            </MenuItem>
-            <MenuItem>
-              <a
-                href="#skills"
-                className="menu-btn"
-                onClick={handleMenuItemClick}
-              >
-                Skills
-              </a>
-            </MenuItem>
-            <MenuItem>
-              <a
-                href="#contact"
-                className="menu-btn"
+                href={`#${SECTION_IDS.contact}`}
+                className="site-header__cta"
                 onClick={handleMenuItemClick}
               >
                 Contact
               </a>
-            </MenuItem>
-          </MenuContainer>
-          <ThemeToggleButton
-            type="button"
-            onClick={onToggleTheme}
-            aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
-            aria-pressed={theme === "dark"}
-          >
-            <i className={`fas ${theme === "dark" ? "fa-sun" : "fa-moon"}`} />
-          </ThemeToggleButton>
-          <button
-            type="button"
-            className={`menu-btn ${isMenuOpen ? "open" : ""}`}
-            id="nav-icon3"
-            onClick={handleToggleMenu}
-            aria-label="Toggle navigation menu"
-            aria-expanded={isMenuOpen}
-          >
-            <span />
-            <span />
-            <span />
-            <span />
-          </button>
-        </ControlsWrapper>
-      </NavBarContentContainer>
-    </NavBar>
+              <button
+                type="button"
+                className={`site-header__burger menu-btn ${isMenuOpen ? "open" : ""}`}
+                id="nav-icon3"
+                onClick={handleToggleMenu}
+                aria-label="Toggle navigation menu"
+                aria-expanded={isMenuOpen}
+                aria-controls="site-header-nav"
+              >
+                <span />
+                <span />
+                <span />
+                <span />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 }

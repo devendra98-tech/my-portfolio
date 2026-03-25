@@ -1,6 +1,6 @@
 import styled from "styled-components";
 export const ServicesSectionContainer = styled.div`
-  padding: 60px 0;
+  padding: 0 24px;
   background-color: var(--surface-color);
   transition: background-color 0.3s ease;
 `;
