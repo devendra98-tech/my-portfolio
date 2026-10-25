@@ -5,15 +5,12 @@ import contactFormvalidationSchema from "./contact-form-validations";
 import Loader from "../loader/loader";
 import Toast from "../tost";
 import { useGsapReveal } from "../../hooks/useGsapReveal";
-import type { EmailPayload } from "../../@services/sendEmail/sendEmail";
+import type { ContactMessage } from "../../@services/sendEmail/sendEmail";
 import { SITE } from "../../config/site";
 
 type ToastType = "success" | "warning" | "error" | "info";
-type ContactFormValues = {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
+type ContactFormValues = ContactMessage & {
+  botcheck: boolean;
 };
 
 const initialValues: ContactFormValues = {
@@ -21,6 +18,7 @@ const initialValues: ContactFormValues = {
   email: "",
   subject: "",
   message: "",
+  botcheck: false,
 };
 
 type InfoRowProps = {
@@ -73,25 +71,13 @@ export default function ContactSection({ isLoading }: ContactSectionProps) {
   ) => {
     setLoading(true);
     setSubmissionStatus("idle");
-    const payload: EmailPayload = {
-      service_id: "service_970foha",
-      template_id: "template_7bymmuf",
-      user_id: "FOhxzVTlNeRwpMLg7",
-      template_params: values,
-    };
 
     try {
-      const response = await sendEmail(payload);
-      if (response.status >= 200 && response.status < 300) {
-        resetForm();
-        setToastMessage("Message sent successfully!");
-        setToastType("success");
-        setSubmissionStatus("success");
-      } else {
-        setToastMessage("Something went wrong!");
-        setToastType("error");
-        setSubmissionStatus("error");
-      }
+      await sendEmail(values);
+      resetForm();
+      setToastMessage("Message sent successfully!");
+      setToastType("success");
+      setSubmissionStatus("success");
     } catch (error) {
       setToastMessage("Unable to send message right now. Please try again.");
       setToastType("error");
@@ -129,11 +115,12 @@ export default function ContactSection({ isLoading }: ContactSectionProps) {
               </div>
             ) : (
               <>
-                <div className="text">Don't be shy</div>
+                <div className="text">Let’s Connect</div>
                 <p>
-                  Feel free to get in touch with me. I am always open to
-                  discussing new projects, creative ideas or opportunities to be
-                  part of your visions.
+                  I’m always open to exploring new opportunities, collaborating
+                  on exciting projects, and turning innovative ideas into
+                  impactful digital experiences. Feel free to reach out — I’d
+                  love to hear from you!
                 </p>
                 <div className="icons">
                   {INFO_ROWS.map((row) => (
@@ -205,6 +192,14 @@ export default function ContactSection({ isLoading }: ContactSectionProps) {
                             </div>
                           )}
                           <div id="form-container" className="form-container">
+                            <div className="contact-botcheck" aria-hidden="true">
+                              <Field
+                                type="checkbox"
+                                name="botcheck"
+                                tabIndex={-1}
+                                autoComplete="off"
+                              />
+                            </div>
                             <div className="fields">
                               <div className="field name">
                                 <Field

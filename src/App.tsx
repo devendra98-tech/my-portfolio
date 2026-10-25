@@ -40,8 +40,7 @@ const App = () => {
   });
 
   // const { accentHex, setAccentHex } = useAccentColor(theme);
-  const { open: commandOpen, close: closeCommand } =
-    useCommandPaletteToggle();
+  const { open: commandOpen, close: closeCommand } = useCommandPaletteToggle();
 
   useEffect(() => {
     const handleScroll = () => {
