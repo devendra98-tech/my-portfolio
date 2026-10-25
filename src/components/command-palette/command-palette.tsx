@@ -1,10 +1,4 @@
-import {
-  FC,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { FC, useCallback, useEffect, useRef, useState } from "react";
 import { SECTION_IDS } from "../../config/site";
 
 type NavAction = {
@@ -37,7 +31,7 @@ const CommandPalette: FC<CommandPaletteProps> = ({ open, onClose }) => {
       }
       onClose();
     },
-    [onClose]
+    [onClose],
   );
 
   useEffect(() => {
