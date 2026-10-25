@@ -35,7 +35,7 @@ const SKILLS: SkillItemProps[] = [
   },
   {
     label: "React",
-    src: "https://cdn.worldvectorlogo.com/logos/react-2.svg",
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
     alt: "React logo",
   },
   {

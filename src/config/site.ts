@@ -3,8 +3,10 @@ export const SITE = {
   linkedIn: "https://www.linkedin.com/in/golakoti-devendra-b5a145213/",
   githubProfile: "https://github.com/devendra98-tech",
   githubApiUser: "devendra98-tech",
- resumePath: "/my-portfolio/resume.pdf",
-  } as const;
+  resumePath: "/my-portfolio/resume.pdf",
+  /** Public Web3Forms access key. Set REACT_APP_WEB3FORMS_ACCESS_KEY before build/deploy. */
+  web3formsAccessKey: process.env.REACT_APP_WEB3FORMS_ACCESS_KEY ?? "",
+} as const;
 
 export const SECTION_IDS = {
   home: "home",
