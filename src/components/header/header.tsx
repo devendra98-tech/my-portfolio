@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { SECTION_IDS } from "../../config/site";
+import { SECTION_IDS, SITE } from "../../config/site";
 
 const SCROLL_SCROLLED_PX = 56;
 const SCROLL_HEADER_EXIT_PX = 670;
@@ -8,11 +8,12 @@ type HeaderProps = {
   isLoading: boolean;
 };
 
-const CENTER_NAV: { href: string; label: string }[] = [
+const CENTER_NAV: { href: string; label: string; external?: boolean }[] = [
   { href: `#${SECTION_IDS.home}`, label: "Home" },
   { href: `#${SECTION_IDS.about}`, label: "About" },
   { href: `#${SECTION_IDS.services}`, label: "Services" },
   { href: `#${SECTION_IDS.skills}`, label: "Skills" },
+  { href: SITE.inkzio, label: "My Brand", external: true },
 ];
 
 export default function Header({ isLoading }: HeaderProps) {
@@ -128,6 +129,12 @@ export default function Header({ isLoading }: HeaderProps) {
                     href={link.href}
                     className="site-header__link"
                     onClick={handleMenuItemClick}
+                    {...(link.external
+                      ? {
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                        }
+                      : {})}
                   >
                     {link.label}
                   </a>
